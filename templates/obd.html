@@ -1,0 +1,32 @@
+{% for device in model.devices %}
+  <table border="1">
+    <tr>
+        <td>alias</td>
+        <td>{{ device.alias }}</td>
+    </tr>
+    <tr>
+        <td>device_id</td>
+        <td>{{ device.device_id }}</td>
+    </tr>
+    <tr>
+        <td>imei</td>
+        <td>{{ device.imei }}</td>
+    </tr>
+    <tr>
+        <td>phone</td>
+        <td>{{ device.phone }}</td>
+    </tr>
+  </table>
+    <h2>obd</h2>
+    <table>
+        <tr>
+            <td>mileage</td>
+            <td>{{ device.obd_params["mileage"].val }}</td>
+        </tr>
+        <tr>
+            <td>errors</td>
+            <td>{{ device.obd_params["errors"].val }}</td>
+        </tr>
+    </table>
+<hr/>
+{% endfor %}
