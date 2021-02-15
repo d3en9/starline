@@ -7,16 +7,14 @@ import requests
 
 class Client:
 
-
-    def __init__(self, slid_token = None, app_id = None, app_secret = None,
-                 user_login = None, user_password = None):
+    def __init__(self, app_id=None, app_secret=None,
+                 user_login=None, user_password=None, slid_token=None):
         # действует один год надо сохранять ограничение на число запросов
         self.slid_token = slid_token
         self.app_id = app_id
         self.app_secret = app_secret
         self.user_login = user_login
         self.user_password = user_password
-
 
     def auth(self):
         if not self.slid_token:
@@ -28,7 +26,6 @@ class Client:
         user_info = self.get_slnet_token(self.slid_token)
         self.user_id = user_info["user_id"]
         self.slnet_token = user_info["slnet_token"]
-
 
     def get_app_code(self, app_id, app_secret):
         """
@@ -136,8 +133,7 @@ class Client:
         user_id = response["user_id"]
         logging.info('slnet token: {}'.format(slnet_token))
         logging.info('user_id: {}'.format(user_id))
-        return { 'slnet_token': slnet_token, 'user_id': user_id }
-
+        return {'slnet_token': slnet_token, 'user_id': user_id}
 
     def get_user_info(self):
         """
@@ -170,9 +166,3 @@ class Client:
         response = r.json()
         logging.info('response info: {}'.format(response))
         return response
-
-
-
-
-
-
